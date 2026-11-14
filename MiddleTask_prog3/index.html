@@ -1,585 +1,300 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>מרחב | מגישים בקשת רכש מלאה</title>
-    <meta name="description" content="יחידת למידה קצרה לעובדים חדשים ברשת המשרדים מרחב: איך מגישים בקשת רכש מלאה כבר בפעם הראשונה.">
-
-    <!-- Google Fonts: Assistant - גופן הטקסט העברי של היחידה -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
-
-    <!-- css -->
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מרחב | מגישים בקשת רכש מלאה</title>
+<meta name="description" content="יחידת למידה קצרה לעובדים חדשים ברשת המשרדים מרחב: איך מגישים בקשת רכש מלאה כבר בפעם הראשונה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <!-- ===================== סרגל ניווט עליון - fixed-top, נשאר קבוע וגלוי תמיד לאורך הגלילה ===================== -->
-    <header>
-        <nav class="navbar navbar-expand-md fixed-top" id="mainNav" aria-label="ניווט ראשי של האתר">
-            <div class="container">
-                <a class="navbar-brand" href="#hero">מרחב</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M5.5 12.5L12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17" r="1.4" fill="#fff"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 11v6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.4" fill="#fff"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-17a1 1 0 0 1 1-1z" fill="currentColor"/><path d="M14 2.5v5h5" fill="none" stroke="#fff" stroke-width="1.4" opacity=".7"/><path d="M8.5 12h7M8.5 15.5h7M8.5 19h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="scale(-1 1) translate(-24 0)"/><path d="M20 9H10.5a6 6 0 0 0 0 12H13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" transform="scale(-1 1) translate(-24 0)"/></symbol>
+  <symbol id="i-mark" viewBox="0 0 40 40"><rect x="6" y="3" width="26" height="33" rx="5" fill="#0163FD"/><rect x="11" y="10" width="16" height="3" rx="1.5" fill="#fff"/><rect x="11" y="17" width="11" height="3" rx="1.5" fill="#fff" opacity=".8"/><circle cx="29" cy="29" r="9" fill="#F29D38"/><path d="M25 29.2l2.8 2.8 5-5.4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavLinks"
-                    aria-controls="mainNavLinks" aria-expanded="false" aria-label="פתיחת תפריט ניווט">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="מרחב – לתחילת היחידה"><svg aria-hidden="true"><use href="#i-mark"/></svg>מרחב</a>
+    <button class="burger" id="burger" aria-label="תפריט" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    <ul class="links" id="links">
+      <li><a href="#why" data-nav="why">למה לי?</a></li>
+      <li><a href="#overview" data-nav="overview">מבט על</a></li>
+      <li><a href="#form" data-nav="form">הטופס</a></li>
+      <li class="cta-li"><a class="btn btn-p" href="#practice" data-nav="practice">עכשיו תורכם</a></li>
+    </ul>
+  </div>
+</header>
 
-                <div class="collapse navbar-collapse" id="mainNavLinks">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#lama-li">למה לי?</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#mabat-al">מבט על</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#ha-tofes">הטופס</a>
-                        </li>
-                        <li class="nav-item">
-                            <!--
-                                פריט ניווט נעול: אסור לאפשר מעבר ל"עכשיו תורכם" כל עוד
-                                שלושת אזורי הלחיצה במקטע "הטופס" (3.1-3.3) לא נפתחו.
-                                הנעילה בפועל (מניעת קליק + aria-disabled) ממומשת ב-main.js.
-                            -->
-                            <a class="nav-link" href="#achshav-torchem" id="navLockedLink" aria-disabled="true"
-                                data-locked="true">עכשיו תורכם</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<main id="top">
+  <!-- 0 · Hero -->
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap split">
+      <div class="txt">
+        <h1 id="h-hero">מגישים בקשת רכש</h1>
+        <p class="lead">מה צריך למלא וממי מקבלים אישור לפני שמעבירים בקשה לרכש?<br>ביחידה הזו תכירו את טופס הבקשה של "מרחב" ותתרגלו מילוי בקשה מלאה בעצמכם.</p>
+        <p class="note">* מטעמי נוחות היחידה מנוסחת בלשון זכר, אך מיועדת לנשים וגברים כאחד.</p>
+      </div>
+      <div class="vis hero-art" aria-hidden="true">
+        <svg viewBox="0 0 560 500">
+          <defs>
+            <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#00255f" flood-opacity=".28"/></filter>
+            <clipPath id="sheet"><rect x="170" y="70" width="270" height="350" rx="16"/></clipPath>
+          </defs>
+          <circle cx="300" cy="262" r="218" fill="#0163FD"/>
+          <circle cx="300" cy="262" r="218" fill="none" stroke="#CCE0FF" stroke-width="2" stroke-dasharray="3 10" transform="rotate(20 300 262)" opacity=".5"/>
+          <circle cx="62" cy="120" r="9" fill="#FDB61E"/><circle cx="520" cy="410" r="7" fill="#0163FD"/><circle cx="96" cy="430" r="6" fill="#0163FD"/><circle cx="508" cy="70" r="5" fill="#0163FD"/>
+          <g transform="rotate(7 305 245)"><rect x="170" y="70" width="270" height="350" rx="16" fill="#CCE0FF"/></g>
+          <g transform="rotate(-4 305 245)" filter="url(#sh)">
+            <rect x="170" y="70" width="270" height="350" rx="16" fill="#fff"/>
+            <g clip-path="url(#sheet)"><rect x="170" y="70" width="270" height="52" fill="#0043AC"/></g>
+            <rect x="320" y="90" width="98" height="12" rx="6" fill="#fff"/><rect x="192" y="91" width="44" height="10" rx="5" fill="#fff" opacity=".55"/>
+            <!-- part 1 -->
+            <rect x="188" y="138" width="234" height="86" rx="10" fill="#F3F7FE"/>
+            <circle cx="404" cy="157" r="11" fill="#0163FD"/><text x="404" y="162" text-anchor="middle" font-family="Assistant,Arial" font-weight="700" font-size="14" fill="#fff">1</text>
+            <rect x="300" y="151" width="90" height="10" rx="5" fill="#080707" opacity=".75"/>
+            <rect x="306" y="174" width="104" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/><rect x="200" y="174" width="98" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/>
+            <rect x="200" y="198" width="210" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/>
+            <rect x="330" y="180" width="66" height="6" rx="3" fill="#0163FD" opacity=".55"/><rect x="230" y="180" width="56" height="6" rx="3" fill="#0163FD" opacity=".55"/><rect x="250" y="204" width="146" height="6" rx="3" fill="#0163FD" opacity=".55"/>
+            <!-- part 2 -->
+            <rect x="188" y="234" width="234" height="66" rx="10" fill="#F3F7FE"/>
+            <circle cx="404" cy="253" r="11" fill="#0163FD"/><text x="404" y="258" text-anchor="middle" font-family="Assistant,Arial" font-weight="700" font-size="14" fill="#fff">2</text>
+            <rect x="310" y="247" width="80" height="10" rx="5" fill="#080707" opacity=".75"/>
+            <rect x="262" y="270" width="148" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/><rect x="200" y="270" width="54" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/>
+            <rect x="300" y="276" width="96" height="6" rx="3" fill="#0163FD" opacity=".55"/><rect x="214" y="276" width="26" height="6" rx="3" fill="#0163FD" opacity=".55"/>
+            <!-- part 3 -->
+            <rect x="188" y="310" width="234" height="92" rx="10" fill="#F3F7FE"/>
+            <circle cx="404" cy="329" r="11" fill="#0163FD"/><text x="404" y="334" text-anchor="middle" font-family="Assistant,Arial" font-weight="700" font-size="14" fill="#fff">3</text>
+            <rect x="290" y="323" width="100" height="10" rx="5" fill="#080707" opacity=".75"/>
+            <path d="M216 380c10-22 18-24 20-8s8 14 16-6 14-12 16 4 12 8 24-10" fill="none" stroke="#0043AC" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="300" y="362" width="110" height="18" rx="4" fill="#fff" stroke="#D6DBE5" stroke-width="1.5"/><rect x="320" y="368" width="70" height="6" rx="3" fill="#0163FD" opacity=".55"/>
+          </g>
+          <!-- approval stamp -->
+          <g transform="translate(148 392) rotate(-14)">
+            <circle r="66" fill="#FDB61E" filter="url(#sh)"/>
+            <circle r="52" fill="none" stroke="#080707" stroke-width="3" stroke-dasharray="7 6"/>
+            <path d="M-24 2l16 16 32-34" fill="none" stroke="#080707" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
 
-    <main>
-
-        <!-- ===================== מקטע 0 - Hero (פתיחה) | רקע: surface | תמונה משמאל, טקסט מימין ===================== -->
-        <section id="hero" class="section-block bg-surface" aria-labelledby="heroTitle">
-            <div class="container">
-                <div class="row align-items-center gy-4 flex-row-reverse">
-                    <!-- עמודה ראשונה ב-DOM = ימין ב-RTL: הטקסט -->
-                    <div class="col-12 col-md-7">
-                        <h1 id="heroTitle">מגישים בקשת רכש</h1>
-                        <p class="body-l">
-                            מה צריך למלא וממי מקבלים אישור לפני שמעבירים בקשה לרכש?
-                            ביחידה הזו תכירו את טופס הבקשה של "מרחב" ותתרגלו מילוי בקשה מלאה בעצמכם.
-                        </p>
-                        <p class="body-m fst-italic">
-                            * מטעמי נוחות היחידה מנוסחת בלשון זכר, אך מיועדת לנשים וגברים כאחד.
-                        </p>
-                    </div>
-                    <!-- עמודה שנייה ב-DOM = שמאל ב-RTL: פלייסהולדר תמונה -->
-                    <div class="col-12 col-md-5">
-                        <div class="image-placeholder" role="img" aria-label="תמונת פתיחה ליחידת הלמידה">
-                            <span>תמונת הירו (פלייסהולדר)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== מקטע 1 - תפיסה: "למה לי?" | רקע: tint-blue | תרשים משמאל, טקסט מימין ===================== -->
-        <section id="lama-li" class="section-block bg-tint-blue" aria-labelledby="lamaLiTitle">
-            <div class="container">
-                <div class="row align-items-center gy-4 flex-row-reverse">
-                    <!-- טקסט: ימין -->
-                    <div class="col-12 col-md-6">
-                        <h2 id="lamaLiTitle">למה לי?</h2>
-                        <p class="body-l">
-                            הפרטים שממלאים בטופס עוזרים למנהל הסניף לקבל החלטה ולרכז הרכש לדעת מה להזמין.
-                        </p>
-                        <p class="body-l"><strong>בקשה מלאה</strong> מטופלת ברכש תוך 3 ימי עבודה.</p>
-                        <p class="body-l"><strong>בקשה חסרה</strong> חוזרת למבקש להשלמה.</p>
-                        <p class="body-l fw-bold">בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
-                        <p class="body-l fw-bold">ומה הופך בקשה למלאה? גללו מטה ותגלו.</p>
-                    </div>
-
-                    <!-- תרשים השרשרת: שמאל -->
-                    <div class="col-12 col-md-6">
-                        <svg class="chain-diagram" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg" role="img"
-                            aria-label="תרשים שרשרת בקשת רכש: מבקש פונה למנהל הסניף. אם הבקשה מלאה היא מאושרת ועוברת לרכז הרכש. אם חסרים פרטים, היא חוזרת למבקש.">
-
-                            <!-- קופסת "מבקש" -->
-                            <rect x="80" y="12" width="160" height="56" rx="12" class="chain-box" />
-                            <text x="160" y="46" class="chain-box-text" text-anchor="middle">מבקש</text>
-
-                            <!-- חץ: מבקש -> מנהל סניף -->
-                            <line x1="160" y1="68" x2="160" y2="104" class="chain-arrow" />
-                            <polygon points="160,112 153,99 167,99" class="chain-arrow-head" />
-
-                            <!-- קופסת "מנהל סניף" -->
-                            <rect x="80" y="112" width="160" height="56" rx="12" class="chain-box" />
-                            <text x="160" y="146" class="chain-box-text" text-anchor="middle">מנהל סניף</text>
-
-                            <!-- חץ ירוק: מנהל סניף -> אישור בקשה -->
-                            <line x1="160" y1="168" x2="160" y2="200" class="chain-arrow chain-arrow-success" />
-                            <polygon points="160,208 153,195 167,195" class="chain-arrow-head chain-arrow-head-success" />
-
-                            <!-- "אישור בקשה" (תגית ירוקה) -->
-                            <rect x="70" y="208" width="180" height="44" rx="22" class="chain-pill chain-pill-success" />
-                            <text x="160" y="235" class="chain-pill-text" text-anchor="middle">אישור בקשה</text>
-
-                            <!-- חץ ירוק: אישור בקשה -> רכז רכש -->
-                            <line x1="160" y1="252" x2="160" y2="294" class="chain-arrow chain-arrow-success" />
-                            <polygon points="160,302 153,289 167,289" class="chain-arrow-head chain-arrow-head-success" />
-
-                            <!-- קופסת "רכז רכש" -->
-                            <rect x="80" y="302" width="160" height="56" rx="12" class="chain-box" />
-                            <text x="160" y="336" class="chain-box-text" text-anchor="middle">רכז רכש</text>
-
-                            <!-- "חסרים פרטים?" (תגית כתומה) -->
-                            <rect x="4" y="118" width="112" height="44" rx="22" class="chain-pill chain-pill-error" />
-                            <text x="60" y="145" class="chain-pill-text-sm" text-anchor="middle">חסרים פרטים?</text>
-
-                            <!-- חץ כתום: מנהל סניף -> חסרים פרטים -->
-                            <line x1="80" y1="140" x2="122" y2="140" class="chain-arrow chain-arrow-error" />
-                            <polygon points="116,140 128,134 128,146" class="chain-arrow-head chain-arrow-head-error" />
-
-                            <!-- חץ מקווקו כתום: חסרים פרטים -> חזרה למבקש -->
-                            <path d="M 50 118 C 30 75 65 45 96 50" class="chain-arrow chain-arrow-error chain-arrow-dashed"
-                                fill="none" />
-                            <polygon points="100,42 109,56 93,56" class="chain-arrow-head chain-arrow-head-error" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== מקטע 2 - ידע: מבט על | רקע: surface | תמונה משמאל, טקסט מימין ===================== -->
-        <section id="mabat-al" class="section-block bg-surface" aria-labelledby="mabatAlTitle">
-            <div class="container">
-                <div class="row align-items-center gy-4 flex-row-reverse">
-                    <!-- טקסט: ימין -->
-                    <div class="col-12 col-md-6">
-                        <h2 id="mabatAlTitle">מה הופך בקשה למלאה?</h2>
-                        <p class="body-l">כל בקשה לציוד משרדי ב"מרחב" מוגשת באותו טופס.</p>
-                        <p class="body-l">
-                            הבקשה עונה על השאלות: <strong>"מי מבקש, למה, מה וכמה?"</strong>,
-                            ומאושרת על ידי מנהל הסניף לפני שהיא יוצאת לדרך.
-                        </p>
-                        <p class="body-l">עכשיו נכיר את כל אחד מחלקי הטופס.</p>
-                    </div>
-                    <!-- תמונה: שמאל -->
-                    <div class="col-12 col-md-6">
-                        <!-- פלייסהולדר לתמונת הטופס הריק - תוחלף בתמונה אמיתית אחרי בניית הטופס בפועל (מקטע 5) -->
-                        <div class="image-placeholder" role="img" aria-label="תמונת טופס בקשת הרכש, ריק">
-                            <span>תמונת טופס (פלייסהולדר)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== מקטע 3 - ידע: רכיבי הטופס (הרכיב האינטראקטיבי) | רקע: tint-blue | תמונה משמאל, טקסט מימין ===================== -->
-        <section id="ha-tofes" class="section-block bg-tint-blue" aria-labelledby="haTofesTitle">
-            <div class="container">
-                <div class="row align-items-start gy-4 flex-row-reverse">
-                    <!-- טקסט: ימין -->
-                    <div class="col-12 col-md-5">
-                        <h2 id="haTofesTitle">מבנה הטופס</h2>
-                        <p class="body-l">
-                            הטופס בנוי משלושה חלקים, וכל השדות בו חובה: פרטי מבקש, פרטי פריט, ואישור מנהל סניף.
-                        </p>
-                        <p class="body-l">
-                            על גבי הטופס מסומנים שלושת החלקים. לחצו על כל סימון כדי לראות אילו פרטים יש למלא
-                            באותו חלק ומה עושים אם חסר פרט.
-                        </p>
-                        <p class="body-l">אחרי שתפתחו את שלושתם, תוכלו להמשיך לשלב הבא.</p>
-
-                        <p class="body-m" id="zoomProgressNote">
-                            נפתחו <span id="zoomOpenedCount">0</span> מתוך 3 חלקי הטופס.
-                        </p>
-                    </div>
-
-                    <!-- תמונה + נקודות לחיצה: שמאל -->
-                    <div class="col-12 col-md-7">
-                        <!--
-                            פלייסהולדר לתמונת הטופס עם 3 נקודות לחיצה (הזום-אינים).
-                            מספר הנקודות קבוע (3) לפי מבנה הטופס - לכן נכתב ידנית ולא בלולאה דינמית,
-                            אבל לוגיקת המעקב אחרי פתיחה (ב-main.js) כן בנויה גנרית על פני מערך המזהים.
-                        -->
-                        <div class="image-placeholder form-hotspot-wrap" role="img"
-                            aria-label="תמונת מבנה הטופס עם שלושה אזורי לחיצה">
-                            <span>תמונת טופס עם 3 אזורי לחיצה (פלייסהולדר)</span>
-
-                            <button type="button" class="hotspot-btn" style="top: 20%; right: 65%;" data-bs-toggle="modal"
-                                data-bs-target="#zoomModal1" data-zoom-id="1" aria-haspopup="dialog">1</button>
-
-                            <button type="button" class="hotspot-btn" style="top: 50%; right: 65%;" data-bs-toggle="modal"
-                                data-bs-target="#zoomModal2" data-zoom-id="2" aria-haspopup="dialog">2</button>
-
-                            <button type="button" class="hotspot-btn" style="top: 80%; right: 65%;" data-bs-toggle="modal"
-                                data-bs-target="#zoomModal3" data-zoom-id="3" aria-haspopup="dialog">3</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== מודלים לזום-אינים (3.1-3.3), נסגרים ב-X. כל מודל: טקסט מימין, פלייסהולדר לזום-אין של חלק הטופס משמאל ===== -->
-        <div class="modal fade" id="zoomModal1" tabindex="-1" aria-labelledby="zoomModal1Title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="zoomModal1Title">1. פרטי המבקש</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row flex-row-reverse gy-3">
-                            <div class="col-12 col-md-7">
-                                <p class="body-m">
-                                    ממלאים את שמכם המלא, תפקיד וסניף. תאריך הבקשה ממולא אוטומטית.
-                                    בהסבר הצורך מציינים לאן הציוד מיועד ולמה הוא נחוץ. כך הרכש יודע לתעדף
-                                    את הבקשה ולוודא שהפריט מתאים לשימוש.
-                                </p>
-                                <p class="body-m">
-                                    <strong>דוגמה:</strong> "לחדר ההדרכה בסניף חיפה. הלוח הקיים שבור, וההדרכות
-                                    השבועיות לעובדים חדשים מתקיימות בלי לוח."
-                                </p>
-                                <p class="body-m">
-                                    <strong>אם חסר פרט:</strong> משלימים את החסר. אם בהסבר כתוב רק "צריך", מוסיפים
-                                    איפה ישתמשו בציוד ולמה.
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-5">
-                                <!-- פלייסהולדר לזום-אין של חלק "פרטי המבקש" בטופס האמיתי -->
-                                <div class="image-placeholder image-placeholder-sm" role="img"
-                                    aria-label="זום-אין על חלק פרטי המבקש בטופס">
-                                    <span>זום-אין: פרטי המבקש (פלייסהולדר)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- 1 · Why -->
+  <section id="why" class="band-b" aria-labelledby="h-why">
+    <div class="wrap split">
+      <div class="txt">
+        <h2 id="h-why">למה לי?</h2>
+        <p>הפרטים שממלאים בטופס עוזרים למנהל הסניף לקבל החלטה ולרכז הרכש לדעת מה להזמין.</p>
+        <div class="duo">
+          <div class="stat"><div class="n">3</div><h3>בקשה מלאה</h3><p>מטופלת ברכש תוך 3 ימי עבודה.</p></div>
+          <div class="stat bad"><div class="n"><svg aria-hidden="true"><use href="#i-return"/></svg></div><h3>בקשה חסרה</h3><p>חוזרת למבקש להשלמה.</p></div>
         </div>
+        <p class="punch">בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
+        <a class="down" href="#overview">ומה הופך בקשה למלאה? גללו מטה ותגלו. <svg aria-hidden="true"><use href="#i-down"/></svg></a>
+      </div>
+      <figure class="vis chain-fig" id="chain">
+        <svg class="chain" viewBox="0 0 640 360" role="img" aria-labelledby="chain-t">
+          <title id="chain-t">מבקש, מנהל סניף, רכז רכש, אישור בקשה. חסרים פרטים? הבקשה חוזרת למבקש.</title>
+          <defs>
+            <marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L11 6L1 11z" fill="#0163FD"/></marker>
+            <marker id="ahr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L11 6L1 11z" fill="#B42318"/></marker>
+            <filter id="nsh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity=".16"/></filter>
+          </defs>
+          <g font-family="Assistant,Arial" font-weight="700" text-anchor="middle" direction="rtl">
+          <!-- requester -->
+          <g class="s" style="--d:0s">
+            <circle cx="575" cy="130" r="50" fill="#fff" filter="url(#nsh)"/><circle cx="575" cy="130" r="50" fill="#CCE0FF" opacity=".9"/>
+            <circle cx="575" cy="118" r="14" fill="#0163FD"/><path d="M550 156c3-17 12-25 25-25s22 8 25 25z" fill="#0163FD"/>
+            <g transform="translate(537 94)"><circle r="16" fill="#fff" stroke="#CCE0FF" stroke-width="3"/><path d="M-6 -9h8l5 5v13h-13z" fill="#0163FD"/><path d="M-3 0h7M-3 4h5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></g>
+            <text x="575" y="212" font-size="22" fill="#080707">מבקש</text>
+          </g>
+          <g class="s a" style="--d:.4s"><path pathLength="1" d="M519 130H459" stroke="#0163FD" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/></g>
+          <!-- branch manager -->
+          <g class="s" style="--d:.8s">
+            <circle cx="400" cy="130" r="50" fill="#0163FD" filter="url(#nsh)"/>
+            <circle cx="400" cy="118" r="14" fill="#fff"/><path d="M375 156c3-17 12-25 25-25s22 8 25 25z" fill="#fff"/><path d="M400 133l-5 7 5 13 5-13z" fill="#0163FD"/>
+            <text x="400" y="212" font-size="22" fill="#080707">מנהל סניף</text>
+          </g>
+          <g class="s a" style="--d:1.2s"><path pathLength="1" d="M344 130H284" stroke="#0163FD" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/></g>
+          <!-- purchasing coordinator -->
+          <g class="s" style="--d:1.6s">
+            <circle cx="225" cy="130" r="50" fill="#0043AC" filter="url(#nsh)"/>
+            <path d="M202 120l23 -11 23 11v26l-23 11 -23 -11z" fill="#fff"/><path d="M202 120l23 11 23 -11M225 131v26" fill="none" stroke="#0043AC" stroke-width="2.6" stroke-linejoin="round"/>
+            <text x="225" y="212" font-size="22" fill="#080707">רכז רכש</text>
+          </g>
+          <g class="s a" style="--d:2s"><path pathLength="1" d="M169 130H117" stroke="#0163FD" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/></g>
+          <!-- approval -->
+          <g class="s" style="--d:2.4s">
+            <circle cx="65" cy="130" r="42" fill="#FDB61E" filter="url(#nsh)"/>
+            <path d="M47 131l12 12 24-26" fill="none" stroke="#080707" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="65" y="212" font-size="22" fill="#080707">אישור בקשה</text>
+          </g>
+          <!-- return loop: coordinator → requester -->
+          <g class="s r" style="--d:2.9s">
+            <path d="M225 236C225 342 575 342 575 242" fill="none" stroke="#B42318" stroke-width="3.5" stroke-dasharray="10 8" stroke-linecap="round" marker-end="url(#ahr)"/>
+            <rect x="316" y="295" width="168" height="44" rx="22" fill="#fff" stroke="#B42318" stroke-width="2.5"/>
+            <text x="400" y="324" font-size="20" fill="#B42318">חסרים פרטים?</text>
+          </g>
+          </g>
+        </svg>
+      </figure>
+    </div>
+  </section>
 
-        <div class="modal fade" id="zoomModal2" tabindex="-1" aria-labelledby="zoomModal2Title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="zoomModal2Title">2. פרטי הפריט</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row flex-row-reverse gy-3">
-                            <div class="col-12 col-md-7">
-                                <p class="body-m">
-                                    כותבים את שם הפריט כפי שמופיע בקטלוג מרחב, את המק"ט שלו ואת הכמות הנדרשת.
-                                    כך הרכש יודע בדיוק מה להזמין ובאיזו כמות.
-                                </p>
-                                <p class="body-m">
-                                    <strong>דוגמה:</strong> לוח מחיק מגנטי לתלייה על קיר, 120×90 ס"מ, מק"ט 40218,
-                                    שתי יחידות.
-                                </p>
-                                <p class="body-m">
-                                    <strong>אם חסר פרט:</strong> מאתרים את הדגם בקטלוג ומעתיקים את המק"ט. אם חסרה
-                                    כמות, מבררים כמה יחידות דרושות.
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-5">
-                                <!-- פלייסהולדר לזום-אין של חלק "פרטי הפריט" בטופס האמיתי -->
-                                <div class="image-placeholder image-placeholder-sm" role="img"
-                                    aria-label="זום-אין על חלק פרטי הפריט בטופס">
-                                    <span>זום-אין: פרטי הפריט (פלייסהולדר)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- 2 · Overview -->
+  <section id="overview" class="band-a" aria-labelledby="h-ov">
+    <div class="wrap split top">
+      <div class="txt sticky">
+        <h2 id="h-ov">מה הופך בקשה למלאה?</h2>
+        <p>כל בקשה לציוד משרדי ב"מרחב" מוגשת באותו טופס.</p>
+        <p>הבקשה עונה על השאלות: <b>"מי מבקש, למה, מה וכמה?"</b>, ומאושרת על ידי מנהל הסניף לפני שהיא יוצאת לדרך.</p>
+        <p>עכשיו נכיר את כל אחד מחלקי הטופס.</p>
+      </div>
+      <div class="vis" id="ov-form"></div>
+    </div>
+  </section>
+
+  <!-- 3 · Structure -->
+  <section id="form" class="band-b" aria-labelledby="h-form">
+    <div class="wrap split top">
+      <div class="txt sticky">
+        <h2 id="h-form">מבנה הטופס</h2>
+        <p>הטופס בנוי משלושה חלקים, וכל השדות בו חובה: פרטי מבקש, פרטי פריט, ואישור מנהל סניף.</p>
+        <p>על גבי הטופס מסומנים שלושת החלקים. לחצו על כל סימון כדי לראות אילו פרטים יש למלא באותו חלק ומה עושים אם חסר פרט.</p>
+        <p>אחרי שתפתחו את שלושתם, תוכלו להמשיך לשלב הבא.</p>
+        <a class="btn btn-p" id="go-check" href="#check" aria-disabled="true">להמשך</a>
+      </div>
+      <div class="vis" id="st-form"></div>
+    </div>
+  </section>
+
+  <!-- 4 · Check -->
+  <section id="check" class="band-a" aria-labelledby="h-check">
+    <div class="wrap split top">
+      <div class="txt">
+        <h2 id="h-check">בדיקת בקשה</h2>
+        <p>לפניכם בקשת רכש שהוגשה לאישור. בדקו אותה וענו על שתי השאלות הבאות.</p>
+        <form class="q" id="q1" novalidate>
+          <fieldset>
+            <legend>1. האם הבקשה מוכנה להעברה לרכש?</legend>
+            <label class="opt"><input type="radio" name="q1" value="yes"> כן.</label>
+            <label class="opt"><input type="radio" name="q1" value="no"> לא.</label>
+          </fieldset>
+          <div class="q-act"><button class="btn btn-p" type="submit">בדיקה</button></div>
+          <div class="fb" id="fb1" role="status" aria-live="polite"></div>
+        </form>
+        <form class="q" id="q2" novalidate hidden>
+          <fieldset>
+            <legend>2. איך תשלימו את הפרטים החסרים בטופס?</legend>
+            <p class="sub">(בחרו את כל התשובות הנכונות)</p>
+            <label class="opt"><input type="checkbox" name="q2" value="a"> ממלאים את שם התפקיד</label>
+            <label class="opt"><input type="checkbox" name="q2" value="b"> בוחרים את מספר הסניף מהרשימה</label>
+            <label class="opt"><input type="checkbox" name="q2" value="c"> מפרטים את הסבר הצורך לבקשה</label>
+            <label class="opt"><input type="checkbox" name="q2" value="d"> כותבים את שם הפריט כפי שמופיע בקטלוג</label>
+            <label class="opt"><input type="checkbox" name="q2" value="e"> מאתרים את מק"ט הפריט בקטלוג</label>
+            <label class="opt"><input type="checkbox" name="q2" value="f"> משלימים את הכמות</label>
+          </fieldset>
+          <div class="q-act"><button class="btn btn-p" type="submit">בדיקה</button></div>
+          <div class="fb" id="fb2" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="vis sticky">
+        <div id="ck-form"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Practice -->
+  <section id="practice" class="band-b" aria-labelledby="h-prac" hidden>
+    <div class="wrap split top">
+      <div class="txt sticky" id="prac-side">
+        <div class="intro" id="intro">
+          <h2 id="h-prac">עכשיו תורכם</h2>
+          <p>בדקתם בקשה קיימת וזיהיתם אילו פרטים צריך להשלים. עכשיו תורכם למלא בקשה!</p>
+          <p>בסיום נבדוק אם הבקשה שמילאתם מוכנה לאישור מנהל סניף ולהעברה לרכש.</p>
+          <button class="btn btn-p" id="start" type="button" style="min-width:160px">התחלה</button>
         </div>
-
-        <div class="modal fade" id="zoomModal3" tabindex="-1" aria-labelledby="zoomModal3Title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="zoomModal3Title">3. אישור מנהל סניף</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row flex-row-reverse gy-3">
-                            <div class="col-12 col-md-7">
-                                <p class="body-m">
-                                    מאשרים מול מנהל הסניף את הבקשה. רק בקשה מאושרת עוברת לרכש.
-                                </p>
-                                <p class="body-m"><strong>דוגמה:</strong> אבי כהן, 28.11.2026.</p>
-                                <p class="body-m">
-                                    <strong>אם חסר פרט:</strong> רכז הרכש מחזיר את הבקשה למבקש. אחרי ההשלמה, הבקשה
-                                    נשלחת לאישור מחדש.
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-5">
-                                <!-- פלייסהולדר לזום-אין של חלק "אישור מנהל סניף" בטופס האמיתי -->
-                                <div class="image-placeholder image-placeholder-sm" role="img"
-                                    aria-label="זום-אין על חלק אישור מנהל סניף בטופס">
-                                    <span>זום-אין: אישור מנהל סניף (פלייסהולדר)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="prac" id="prac" hidden>
+          <h2 tabindex="-1" id="h-fill">מילוי טופס בקשת רכש</h2>
+          <p>לפניכם תרחיש להזמנת ציוד, קראו אותו ומלאו את הטופס שלפניכם לפי הפרטים שמופיעים בו.</p>
+          <div class="scenario">
+            <h3>התרחיש</h3>
+            <p>אתם מזכירי הסניף <mark>באשדוד</mark>. חדר הציוד הפך צפוף מדי, ואין מקום מסודר לאחסן בו את ציוד המשרד.</p>
+            <p>יש להזמין <mark>2 יחידות</mark> של <mark>ארון מתכת דגם R11</mark>, מק"ט <mark>55210</mark>.</p>
+          </div>
+          <p class="attn"><b>שימו לב:</b> הבקשה מוגשת בשמכם. יש למלא את שמכם המלא בשדה "שם מלא".</p>
+          <div class="fb" id="fb3" role="status" aria-live="polite"></div>
         </div>
+      </div>
+      <div class="vis" id="pr-form"></div>
+    </div>
+  </section>
 
-        <!-- ===================== מקטע 4 - שאלות הבנה (בדיקת בקשה) | רקע: surface | אין פריט ניווט נפרד ===================== -->
-        <!-- פריסה: שאלות מימין (תוכן), תמונת/תצוגת הטופס החלקי משמאל - לפי בקשת הלקוח "הטופס תמיד בצד שמאל" -->
-        <section id="bdikat-bakasha" class="section-block bg-surface" aria-labelledby="bdikaTitle">
-            <div class="container">
-                <h2 id="bdikaTitle">בדיקת בקשה</h2>
-                <p class="body-l">לפניכם בקשת רכש שהוגשה לאישור. בדקו אותה וענו על שתי השאלות הבאות.</p>
+  <!-- 6 · Done (revealed after a correct practice) -->
+  <section class="done band-c" id="done" aria-labelledby="h-done" hidden>
+    <div class="wrap split">
+      <div class="txt">
+        <h2 id="h-done" tabindex="-1">סיימתם את התרגול!</h2>
+        <p>בפעם הבאה שתצטרכו להזמין ציוד לסניף, זכרו: כשכל הפרטים בטופס מלאים, מנהל הסניף יכול לבדוק את הבקשה בלי לחזור אליכם להשלמות. אחרי האישור, רכז הרכש יכול להתחיל לטפל בה.</p>
+        <p class="punch">זכרו, בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
+      </div>
+      <div class="vis">
+        <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#FDB61E"/><circle cx="60" cy="60" r="44" fill="none" stroke="#080707" stroke-width="2.5" stroke-dasharray="6 5"/><path d="M38 61l15 15 30-32" fill="none" stroke="#080707" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div id="dn-form"></div>
+      </div>
+    </div>
+  </section>
+</main>
 
-                <div class="row gy-4 flex-row-reverse">
-                    <!-- עמודה ראשונה ב-DOM = ימין: השאלות -->
-                    <div class="col-12 col-md-7">
-                        <!-- שאלה 1: בחירה יחידה -->
-                        <div class="question-block" id="q1Block">
-                            <h3 class="h5">1. האם הבקשה מוכנה להעברה לרכש?</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1Yes" value="כן">
-                                <label class="form-check-label body-m" for="q1Yes">כן</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1No" value="לא">
-                                <label class="form-check-label body-m" for="q1No">לא</label>
-                            </div>
-                            <button type="button" class="btn btn-primary mt-2" id="checkQ1Btn">בדקו תשובה</button>
-                            <p class="body-m feedback-text" id="q1Feedback" role="status" aria-live="polite"></p>
-                        </div>
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="logo" href="#top"><svg aria-hidden="true"><use href="#i-mark"/></svg>מרחב</a>
+        <p>יחידת למידה קצרה לעובדים חדשים: איך מגישים בקשת רכש מלאה כבר בפעם הראשונה. "מרחב" הוא לקוח מדומה, פותח במסגרת מטלת אמצע בקורס תכנות 3.</p>
+      </div>
+      <nav aria-labelledby="f-map">
+        <h2 id="f-map">מפת אתר</h2>
+        <ul class="fmap">
+          <li><a href="#why">למה לי?</a></li>
+          <li><a href="#overview">מבט על</a></li>
+          <li><a href="#form">הטופס</a></li>
+          <li><a href="#practice">עכשיו תורכם</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="f-bot">
+      <p>© 2026 יוצרות היחידה. כל הזכויות שמורות.</p>
+    </div>
+  </div>
+</footer>
 
-                        <!-- שאלה 2: רב-ברירה -->
-                        <div class="question-block mt-4" id="q2Block">
-                            <h3 class="h5">2. איך תשלימו את הפרטים החסרים בטופס?</h3>
-                            <p class="body-m">(בחרו את כל התשובות הנכונות)</p>
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <button class="x" id="dlg-x" type="button" aria-label="סגירה"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  <div class="dlg">
+    <div>
+      <h2 id="dlg-t"></h2>
+      <p id="dlg-b"></p>
+      <div class="box ex"><strong>דוגמה</strong><p id="dlg-ex"></p></div>
+      <div class="box miss"><strong>אם חסר פרט</strong><p id="dlg-m"></p></div>
+    </div>
+    <div id="dlg-form"></div>
+  </div>
+</dialog>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt1" value="role">
-                                <label class="form-check-label body-m" for="q2opt1">ממלאים את שם התפקיד</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt2" value="branch">
-                                <label class="form-check-label body-m" for="q2opt2">בוחרים את מספר הסניף מהרשימה</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt3" value="reason">
-                                <label class="form-check-label body-m" for="q2opt3">מפרטים את הסבר הצורך לבקשה</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt4" value="itemName">
-                                <label class="form-check-label body-m" for="q2opt4">כותבים את שם הפריט כפי שמופיע
-                                    בקטלוג</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt5" value="sku">
-                                <label class="form-check-label body-m" for="q2opt5">מאתרים את מק"ט הפריט בקטלוג</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="q2opt6" value="qty">
-                                <label class="form-check-label body-m" for="q2opt6">משלימים את הכמות</label>
-                            </div>
-
-                            <button type="button" class="btn btn-primary mt-2" id="checkQ2Btn">בדקו תשובה</button>
-                            <p class="body-m feedback-text" id="q2Feedback" role="status" aria-live="polite"></p>
-                        </div>
-                    </div>
-
-                    <!-- עמודה שנייה ב-DOM = שמאל: תצוגת הטופס שהוגש -->
-                    <div class="col-12 col-md-5">
-                        <h3 class="h5">הבקשה שהוגשה</h3>
-                        <!-- פלייסהולדר לתמונת הטופס - יוחלף בתמונה אמיתית לאחר בניית הטופס במקטע 5 -->
-                        <div class="image-placeholder" role="img" aria-label="תמונת הטופס שהוגש, חלקית">
-                            <span>תמונת טופס שהוגש (פלייסהולדר)</span>
-                        </div>
-                        <dl class="partial-form-display body-m">
-                            <dt>שם מלא</dt>
-                            <dd>נועה לוי</dd>
-                            <dt>תפקיד</dt>
-                            <dd>רכזת הדרכה</dd>
-                            <dt>סניף</dt>
-                            <dd>חיפה</dd>
-                            <dt>תאריך הבקשה</dt>
-                            <dd>11.11.2026</dd>
-                            <dt>הסבר הצורך</dt>
-                            <dd>צריך</dd>
-                            <dt>שם הפריט</dt>
-                            <dd>לוח מחיק מגנטי לתלייה על קיר, 120×90 ס"מ</dd>
-                            <dt>מק"ט</dt>
-                            <dd>(ריק)</dd>
-                            <dt>כמות</dt>
-                            <dd>2</dd>
-                            <dt>אישור מנהל סניף</dt>
-                            <dd>(ריק)</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== מקטע 5 - תרגול מסכם: "עכשיו תורכם" | רקע: tint-blue ===================== -->
-        <section id="achshav-torchem" class="section-block bg-tint-blue" aria-labelledby="torchemTitle">
-            <div class="container">
-
-                <!-- מסך מעבר -->
-                <div id="transitionScreen">
-                    <h2 id="torchemTitle">עכשיו תורכם</h2>
-                    <p class="body-l">בדקתם בקשה קיימת וזיהיתם אילו פרטים צריך להשלים. עכשיו תורכם למלא בקשה!</p>
-                    <p class="body-l">בסיום נבדוק אם הבקשה שמילאתם מוכנה לאישור מנהל סניף ולהעברה לרכש.</p>
-                    <button type="button" class="btn btn-primary" id="startPracticeBtn">התחלה</button>
-                </div>
-
-                <!-- מסך התרגול (מוסתר עד לחיצה על "התחלה") -->
-                <!-- פריסה: התרחיש מימין (תוכן קבוע), הטופס האינטראקטיבי משמאל -->
-                <div id="practiceScreen" class="hide">
-                    <h2 class="visually-hidden">מילוי טופס בקשת רכש</h2>
-                    <p class="body-l">
-                        לפניכם תרחיש להזמנת ציוד, קראו אותו ומלאו את הטופס שלפניכם לפי הפרטים שמופיעים בו.
-                    </p>
-                    <p class="body-l">שימו לב: הבקשה מוגשת בשמכם. יש למלא את שמכם המלא בשדה "שם מלא".</p>
-
-                    <div class="row gy-4 flex-row-reverse">
-                        <!-- התרחיש: ימין -->
-                        <div class="col-12 col-md-5">
-                            <div class="scenario-box body-m" id="scenarioText">
-                                אתם מזכירי הסניף באשדוד. חדר הציוד הפך צפוף מדי, ואין מקום מסודר לאחסן בו את
-                                ציוד המשרד.
-                                יש להזמין 2 יחידות של ארון מתכת דגם R11, מק"ט 55210.
-                            </div>
-                        </div>
-
-                        <!-- הטופס האינטראקטיבי: שמאל -->
-                        <div class="col-12 col-md-7">
-                            <form id="practiceForm" novalidate>
-                                <div class="mb-3">
-                                    <label for="fFullName" class="form-label body-m">שם מלא</label>
-                                    <input type="text" class="form-control" id="fFullName" name="fullName">
-                                    <p class="field-feedback" data-for="fFullName"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fRole" class="form-label body-m">תפקיד</label>
-                                    <input type="text" class="form-control" id="fRole" name="role">
-                                    <p class="field-feedback" data-for="fRole"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fBranch" class="form-label body-m">סניף</label>
-                                    <select class="form-select" id="fBranch" name="branch">
-                                        <option value="" selected>בחרו סניף...</option>
-                                        <option value="אשדוד">אשדוד</option>
-                                        <option value="חיפה">חיפה</option>
-                                        <option value="ירושלים">ירושלים</option>
-                                        <option value="תל אביב">תל אביב</option>
-                                    </select>
-                                    <p class="field-feedback" data-for="fBranch"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fDate" class="form-label body-m">תאריך הבקשה</label>
-                                    <!-- ממולא אוטומטית בטעינת העמוד (ב-main.js), שדה לקריאה בלבד -->
-                                    <input type="text" class="form-control" id="fDate" name="date" readonly>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fReason" class="form-label body-m">הסבר הצורך</label>
-                                    <textarea class="form-control" id="fReason" name="reason" rows="3"></textarea>
-                                    <p class="field-feedback" data-for="fReason"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fItemName" class="form-label body-m">שם הפריט</label>
-                                    <input type="text" class="form-control" id="fItemName" name="itemName">
-                                    <p class="field-feedback" data-for="fItemName"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fSku" class="form-label body-m">מק"ט</label>
-                                    <input type="text" class="form-control" id="fSku" name="sku" inputmode="numeric">
-                                    <p class="field-feedback" data-for="fSku"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="fQty" class="form-label body-m">כמות</label>
-                                    <input type="number" class="form-control" id="fQty" name="qty" min="1" step="1">
-                                    <p class="field-feedback" data-for="fQty"></p>
-                                </div>
-
-                                <!-- טקסט ההכוונה לשליחה מופיע תמיד, לא מותנה במילוי מלא -->
-                                <p class="body-m">כשתסיימו למלא את כל השדות, לחצו על "שליחת טופס" לבדיקה.</p>
-                                <button type="submit" class="btn btn-primary">שליחת טופס</button>
-
-                                <p class="body-l feedback-text" id="formFeedback" role="status" aria-live="polite"></p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== מקטע 6 - מסך סיום לתרגול | רקע: surface | אין פריט ניווט נפרד ===================== -->
-        <section id="sium" class="section-block bg-surface text-center" aria-labelledby="siumTitle">
-            <div class="container">
-                <h2 id="siumTitle">סיימתם את התרגול!</h2>
-                <p class="body-l">
-                    בפעם הבאה שתצטרכו להזמין ציוד לסניף, זכרו: כשכל הפרטים בטופס מלאים, מנהל הסניף יכול
-                    לבדוק את הבקשה בלי לחזור אליכם להשלמות. אחרי האישור, רכז הרכש יכול להתחיל לטפל בה.
-                </p>
-                <p class="body-l fw-bold">זכרו, בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===================== מקטע 7 - Footer | רקע: brand-blue (כמו בפיגמה), טקסט לבן ===================== -->
-    <footer id="siteFooter" class="section-block bg-brand-blue text-white">
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-12 col-md-3">
-                    <p class="fw-bold fs-4">מרחב</p>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <p class="fw-bold body-m">מפת אתר</p>
-                    <nav aria-label="ניווט בפוטר">
-                        <ul class="list-unstyled body-m footer-links">
-                            <li><a href="#lama-li">למה לי?</a></li>
-                            <li><a href="#mabat-al">מבט על</a></li>
-                            <li><a href="#ha-tofes">הטופס</a></li>
-                            <li><a href="#achshav-torchem">עכשיו תורכם</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <p class="fw-bold body-m">אודות</p>
-                    <p class="body-m">
-                        יחידת למידה קצרה לעובדים חדשים ברשת המשרדים "מרחב": איך מגישים בקשת רכש מלאה
-                        כבר בפעם הראשונה. היחידה פותחה במסגרת הקורס "תכנות 3", מטלת אמצע. "מרחב" היא
-                        לקוח מדומה.
-                    </p>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <p class="fw-bold body-m">יוצרים</p>
-                    <p class="body-m">תמר יחיאלי ושחר פריד</p>
-                    <p class="body-m">© 2026 תמר יחיאלי ושחר פריד. כל הזכויות שמורות.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- bootstrap bundle (כולל Popper) - בסוף הגוף לטעינה יעילה -->
-    <script src="js/bootstrap.bundle.js"></script>
-    <!-- קוד האתר -->
-    <script src="js/main.js"></script>
-
+<script src="js/main.js"></script>
 </body>
-
 </html>
