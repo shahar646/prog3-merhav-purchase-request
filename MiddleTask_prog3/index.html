@@ -1,111 +1,477 @@
-﻿
-
-<!doctype html>
+﻿<!doctype html>
 <html lang="he" dir="rtl">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>פיתוח אתרי אינטרנט -תרגיל בית שיעור 7</title>
+    <title>מרחב | מגישים בקשת רכש מלאה</title>
+    <meta name="description" content="יחידת למידה קצרה לעובדים חדשים ברשת המשרדים מרחב: איך מגישים בקשת רכש מלאה כבר בפעם הראשונה.">
+
+    <!-- Google Fonts: Assistant - גופן הטקסט העברי של היחידה -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
-    <script src="js/bootstrap.bundle.js"></script>
-    
+
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- JS -->
-    <script src="js/main.js"></script>
-
 </head>
 
- <body class="bg-light">
+<body>
 
-<div class="container">
-    <div class="row">
-        <h1 class="text-center">בחרו את התוכנית המתאימה לכם</h1>
-        <p class="text-center">הצטרפו לאלפי לקוחות מרוצים שכבר משתמשים במערכת שלנו.</p>
-    </div>
+    <!-- ===================== סרגל ניווט עליון, קבוע (sticky) לאורך כל הגלילה ===================== -->
+    <header>
+        <nav class="navbar navbar-expand-md sticky-top" aria-label="ניווט ראשי של האתר">
+            <div class="container">
+                <a class="navbar-brand" href="#hero">מרחב</a>
 
-    <div class="row gy-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavLinks"
+                    aria-controls="mainNavLinks" aria-expanded="false" aria-label="פתיחת תפריט ניווט">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="col-12 col-md-4">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h4 class="">בסיסי</h4>
-                </div>
-                <div class="card-body">
-                    <h2 class="">חינם</h2>
-                    <ul class="">
-                        <li class="list-group-item">גישה בסיסית למערכת</li>
-                        <li class="list-group-item">עד 5 משתמשים</li>
-                        <li class="list-group-item">תמיכה במייל</li>
+                <div class="collapse navbar-collapse" id="mainNavLinks">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#lama-li">למה לי?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#mabat-al">מבט על</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ha-tofes">הטופס</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--
+                                פריט ניווט נעול: אסור לאפשר מעבר ל"עכשיו תורכם" כל עוד
+                                שלושת אזורי הלחיצה במקטע "הטופס" (3.1-3.3) לא נפתחו.
+                                הנעילה בפועל (מניעת קליק + aria-disabled) ממומשת ב-main.js.
+                            -->
+                            <a class="nav-link" href="#achshav-torchem" id="navLockedLink" aria-disabled="true"
+                                data-locked="true">עכשיו תורכם</a>
+                        </li>
                     </ul>
-                    <button type="button" class="btn btn-outline-primary  w-100 toastTrigger" >בחר בתוכנית</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ===================== מקטע 0 - Hero (פתיחה) ===================== -->
+        <section id="hero" class="container section-block" aria-labelledby="heroTitle">
+            <h1 id="heroTitle">מגישים בקשת רכש</h1>
+            <p class="body-l">
+                מה צריך למלא וממי מקבלים אישור לפני שמעבירים בקשה לרכש?
+                ביחידה הזו תכירו את טופס הבקשה של "מרחב" ותתרגלו מילוי בקשה מלאה בעצמכם.
+            </p>
+            <p class="body-m fst-italic">
+                * מטעמי נוחות היחידה מנוסחת בלשון זכר, אך מיועדת לנשים וגברים כאחד.
+            </p>
+        </section>
+
+        <!-- ===================== מקטע 1 - תפיסה: "למה לי?" ===================== -->
+        <section id="lama-li" class="container section-block" aria-labelledby="lamaLiTitle">
+            <p class="eyebrow">למה לי?</p>
+            <h2 id="lamaLiTitle" class="visually-hidden">למה לי?</h2>
+
+            <!--
+                דיאגרמת השרשרת: מבקש -> מנהל סניף -> (אישור בקשה / חסרים פרטים - חוזר למבקש) -> רכז רכש.
+                כרגע ללא עיצוב גרפי, רק רשימת שלבים נגישה; השכבה הגרפית תתווסף בשלב העיצוב.
+            -->
+            <ol class="chain-steps body-l">
+                <li>מבקש</li>
+                <li>מנהל סניף</li>
+                <li>רכז רכש</li>
+            </ol>
+            <p class="body-m">
+                <strong>בקשה מלאה</strong> &rarr; אישור בקשה &rarr; ממשיכה לרכז הרכש.<br>
+                <strong>בקשה חסרה?</strong> &rarr; חוזרת למבקש (חץ חזרה).
+            </p>
+
+            <p class="body-l">
+                הפרטים שממלאים בטופס עוזרים למנהל הסניף לקבל החלטה ולרכז הרכש לדעת מה להזמין.
+            </p>
+            <p class="body-l"><strong>בקשה מלאה</strong> מטופלת ברכש תוך 3 ימי עבודה.</p>
+            <p class="body-l"><strong>בקשה חסרה</strong> חוזרת למבקש להשלמה.</p>
+            <p class="body-l fw-bold">בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
+            <p class="body-l fw-bold">ומה הופך בקשה למלאה? גללו מטה ותגלו.</p>
+        </section>
+
+        <!-- ===================== מקטע 2 - ידע: מבט על ===================== -->
+        <section id="mabat-al" class="container section-block" aria-labelledby="mabatAlTitle">
+            <div class="row align-items-center gy-3">
+                <div class="col-12 col-md-6">
+                    <!-- פלייסהולדר לתמונת הטופס הריק - תוחלף בתמונה אמיתית אחרי בניית הטופס בפועל (מקטע 5) -->
+                    <div class="image-placeholder" role="img" aria-label="תמונת טופס בקשת הרכש, ריק">
+                        <span>תמונת טופס (פלייסהולדר)</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h2 id="mabatAlTitle">מה הופך בקשה למלאה?</h2>
+                    <p class="body-l">כל בקשה לציוד משרדי ב"מרחב" מוגשת באותו טופס.</p>
+                    <p class="body-l">
+                        הבקשה עונה על השאלות: <strong>"מי מבקש, למה, מה וכמה?"</strong>,
+                        ומאושרת על ידי מנהל הסניף לפני שהיא יוצאת לדרך.
+                    </p>
+                    <p class="body-l">עכשיו נכיר את כל אחד מחלקי הטופס.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== מקטע 3 - ידע: רכיבי הטופס (הרכיב האינטראקטיבי) ===================== -->
+        <section id="ha-tofes" class="container section-block" aria-labelledby="haTofesTitle">
+            <h2 id="haTofesTitle">מבנה הטופס</h2>
+            <p class="body-l">
+                הטופס בנוי משלושה חלקים, וכל השדות בו חובה: פרטי מבקש, פרטי פריט, ואישור מנהל סניף.
+            </p>
+            <p class="body-l">
+                על גבי הטופס מסומנים שלושת החלקים. לחצו על כל סימון כדי לראות אילו פרטים יש למלא
+                באותו חלק ומה עושים אם חסר פרט.
+            </p>
+            <p class="body-l">אחרי שתפתחו את שלושתם, תוכלו להמשיך לשלב הבא.</p>
+
+            <!--
+                פלייסהולדר לתמונת הטופס עם 3 נקודות לחיצה (הזום-אינים).
+                מספר הנקודות קבוע (3) לפי מבנה הטופס - לכן נכתב ידנית ולא בלולאה דינמית,
+                אבל לוגיקת המעקב אחרי פתיחה (ב-main.js) כן בנויה גנרית על פני מערך המזהים.
+            -->
+            <div class="image-placeholder form-hotspot-wrap" role="img" aria-label="תמונת מבנה הטופס עם שלושה אזורי לחיצה">
+                <span>תמונת טופס עם 3 אזורי לחיצה (פלייסהולדר)</span>
+
+                <button type="button" class="hotspot-btn" style="top: 20%; right: 65%;" data-bs-toggle="modal"
+                    data-bs-target="#zoomModal1" data-zoom-id="1" aria-haspopup="dialog">1</button>
+
+                <button type="button" class="hotspot-btn" style="top: 50%; right: 65%;" data-bs-toggle="modal"
+                    data-bs-target="#zoomModal2" data-zoom-id="2" aria-haspopup="dialog">2</button>
+
+                <button type="button" class="hotspot-btn" style="top: 80%; right: 65%;" data-bs-toggle="modal"
+                    data-bs-target="#zoomModal3" data-zoom-id="3" aria-haspopup="dialog">3</button>
+            </div>
+
+            <p class="body-m" id="zoomProgressNote">
+                נפתחו <span id="zoomOpenedCount">0</span> מתוך 3 חלקי הטופס.
+            </p>
+        </section>
+
+        <!-- ===== מודלים לזום-אינים (3.1-3.3), נסגרים ב-X לפי הוויירפריים ===== -->
+        <div class="modal fade" id="zoomModal1" tabindex="-1" aria-labelledby="zoomModal1Title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="zoomModal1Title">1. פרטי המבקש</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="body-m">
+                            ממלאים את שמכם המלא, תפקיד וסניף. תאריך הבקשה ממולא אוטומטית.
+                            בהסבר הצורך מציינים לאן הציוד מיועד ולמה הוא נחוץ. כך הרכש יודע לתעדף
+                            את הבקשה ולוודא שהפריט מתאים לשימוש.
+                        </p>
+                        <p class="body-m">
+                            <strong>דוגמה:</strong> "לחדר ההדרכה בסניף חיפה. הלוח הקיים שבור, וההדרכות
+                            השבועיות לעובדים חדשים מתקיימות בלי לוח."
+                        </p>
+                        <p class="body-m">
+                            <strong>אם חסר פרט:</strong> משלימים את החסר. אם בהסבר כתוב רק "צריך", מוסיפים
+                            איפה ישתמשו בציוד ולמה.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-4">
-            <div class="card text-center">
-                <div class="bg-primary card-header text-white">
-                    <h4 class="">פרו (מומלץ!)</h4>
-                </div>
-                <div class="card-body">
-                    <h2 class="">₪99 <small class="fs-6 text-body-secondary">/ לחודש</small></h2>
-                    <ul class="">
-                        <li class="list-group-item">גישה מלאה למערכת</li>
-                        <li class="list-group-item">עד 50 משתמשים</li>
-                        <li class="list-group-item">תמיכה 24/7 בטלפון ובצ'אט</li>
-                    </ul>
-                    <button type="button" class="btn btn-primary  w-100 toastTrigger" >בחר בתוכנית הפרו</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-4">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h4 class="">פרימיום</h4>
-                </div>
-                <div class="card-body">
-                    <h2 class="">₪199 <small class="fs-6 text-body-secondary">/ לחודש</small></h2>
-                    <ul class="">
-                        <li class="list-group-item">כל הפיצ'רים פתוחים</li>
-                        <li class="list-group-item">משתמשים ללא הגבלה</li>
-                        <li class="list-group-item">מנהל תיק לקוח אישי</li>
-                    </ul>
-                    <button type="button" class="btn btn-outline-primary  w-100 toastTrigger" >בחר בתוכנית</button>
+        <div class="modal fade" id="zoomModal2" tabindex="-1" aria-labelledby="zoomModal2Title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="zoomModal2Title">2. פרטי הפריט</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="body-m">
+                            כותבים את שם הפריט כפי שמופיע בקטלוג מרחב, את המק"ט שלו ואת הכמות הנדרשת.
+                            כך הרכש יודע בדיוק מה להזמין ובאיזו כמות.
+                        </p>
+                        <p class="body-m">
+                            <strong>דוגמה:</strong> לוח מחיק מגנטי לתלייה על קיר, 120×90 ס"מ, מק"ט 40218,
+                            שתי יחידות.
+                        </p>
+                        <p class="body-m">
+                            <strong>אם חסר פרט:</strong> מאתרים את הדגם בקטלוג ומעתיקים את המק"ט. אם חסרה
+                            כמות, מבררים כמה יחידות דרושות.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-    </div> 
-</div>
-
-
-<!--/*-->
-<!--* הצגת הודעת Toast בלחיצה על כפתורי בחירת התוכנית.-->
-<!--* הקוד מבוסס על דוגמת "Live example" ב- Bootstrap :-->
-<!--*-->
-
-
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">בחירת תוכנית</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <div class="modal fade" id="zoomModal3" tabindex="-1" aria-labelledby="zoomModal3Title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="zoomModal3Title">3. אישור מנהל סניף</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירה"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="body-m">
+                            מאשרים מול מנהל הסניף את הבקשה. רק בקשה מאושרת עוברת לרכש.
+                        </p>
+                        <p class="body-m"><strong>דוגמה:</strong> אבי כהן, 28.11.2026.</p>
+                        <p class="body-m">
+                            <strong>אם חסר פרט:</strong> רכז הרכש מחזיר את הבקשה למבקש. אחרי ההשלמה, הבקשה
+                            נשלחת לאישור מחדש.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="toast-body">
-            התוכנית נבחרה בהצלחה!
+
+        <!-- ===================== מקטע 4 - שאלות הבנה (בדיקת בקשה) - אין פריט ניווט נפרד ===================== -->
+        <section id="bdikat-bakasha" class="container section-block" aria-labelledby="bdikaTitle">
+            <h2 id="bdikaTitle">בדיקת בקשה</h2>
+            <p class="body-l">לפניכם בקשת רכש שהוגשה לאישור. בדקו אותה וענו על שתי השאלות הבאות.</p>
+
+            <div class="row gy-4">
+                <!-- טור ימני/קבוע: תצוגת הטופס החלקי (קריאה בלבד), כפי שהוגשה לאישור -->
+                <div class="col-12 col-md-5">
+                    <h3 class="h5">הבקשה שהוגשה</h3>
+                    <!-- פלייסהולדר לתמונת הטופס - יוחלף בתמונה אמיתית לאחר בניית הטופס במקטע 5 -->
+                    <div class="image-placeholder" role="img" aria-label="תמונת הטופס שהוגש, חלקית">
+                        <span>תמונת טופס שהוגש (פלייסהולדר)</span>
+                    </div>
+                    <dl class="partial-form-display body-m">
+                        <dt>שם מלא</dt>
+                        <dd>נועה לוי</dd>
+                        <dt>תפקיד</dt>
+                        <dd>רכזת הדרכה</dd>
+                        <dt>סניף</dt>
+                        <dd>חיפה</dd>
+                        <dt>תאריך הבקשה</dt>
+                        <dd>11.11.2026</dd>
+                        <dt>הסבר הצורך</dt>
+                        <dd>צריך</dd>
+                        <dt>שם הפריט</dt>
+                        <dd>לוח מחיק מגנטי לתלייה על קיר, 120×90 ס"מ</dd>
+                        <dt>מק"ט</dt>
+                        <dd>(ריק)</dd>
+                        <dt>כמות</dt>
+                        <dd>2</dd>
+                        <dt>אישור מנהל סניף</dt>
+                        <dd>(ריק)</dd>
+                    </dl>
+                </div>
+
+                <!-- טור שמאלי: שתי השאלות -->
+                <div class="col-12 col-md-7">
+                    <!-- שאלה 1: בחירה יחידה -->
+                    <div class="question-block">
+                        <h3 class="h5">1. האם הבקשה מוכנה להעברה לרכש?</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1Yes" value="כן">
+                            <label class="form-check-label body-m" for="q1Yes">כן</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1No" value="לא">
+                            <label class="form-check-label body-m" for="q1No">לא</label>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary mt-2" id="checkQ1Btn">בדקו תשובה</button>
+                        <p class="body-m feedback-text" id="q1Feedback" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <!-- שאלה 2: רב-ברירה -->
+                    <div class="question-block mt-4">
+                        <h3 class="h5">2. איך תשלימו את הפרטים החסרים בטופס?</h3>
+                        <p class="body-m">(בחרו את כל התשובות הנכונות)</p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt1" value="role">
+                            <label class="form-check-label body-m" for="q2opt1">ממלאים את שם התפקיד</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt2" value="branch">
+                            <label class="form-check-label body-m" for="q2opt2">בוחרים את מספר הסניף מהרשימה</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt3" value="reason">
+                            <label class="form-check-label body-m" for="q2opt3">מפרטים את הסבר הצורך לבקשה</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt4" value="itemName">
+                            <label class="form-check-label body-m" for="q2opt4">כותבים את שם הפריט כפי שמופיע
+                                בקטלוג</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt5" value="sku">
+                            <label class="form-check-label body-m" for="q2opt5">מאתרים את מק"ט הפריט בקטלוג</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="q2opt6" value="qty">
+                            <label class="form-check-label body-m" for="q2opt6">משלימים את הכמות</label>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-primary mt-2" id="checkQ2Btn">בדקו תשובה</button>
+                        <p class="body-m feedback-text" id="q2Feedback" role="status" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== מקטע 5 - תרגול מסכם: "עכשיו תורכם" ===================== -->
+        <section id="achshav-torchem" class="container section-block" aria-labelledby="torchemTitle">
+
+            <!-- מסך מעבר -->
+            <div id="transitionScreen">
+                <h2 id="torchemTitle">עכשיו תורכם</h2>
+                <p class="body-l">בדקתם בקשה קיימת וזיהיתם אילו פרטים צריך להשלים. עכשיו תורכם למלא בקשה!</p>
+                <p class="body-l">בסיום נבדוק אם הבקשה שמילאתם מוכנה לאישור מנהל סניף ולהעברה לרכש.</p>
+                <button type="button" class="btn btn-primary" id="startPracticeBtn">התחלה</button>
+            </div>
+
+            <!-- מסך התרגול (מוסתר עד לחיצה על "התחלה") -->
+            <div id="practiceScreen" class="hide">
+                <h2 class="visually-hidden">מילוי טופס בקשת רכש</h2>
+                <p class="body-l">
+                    לפניכם תרחיש להזמנת ציוד, קראו אותו ומלאו את הטופס שלפניכם לפי הפרטים שמופיעים בו.
+                </p>
+                <p class="body-l">שימו לב: הבקשה מוגשת בשמכם. יש למלא את שמכם המלא בשדה "שם מלא".</p>
+
+                <div class="row gy-4">
+                    <!-- התרחיש - קבוע לצד הטופס לאורך כל המילוי -->
+                    <div class="col-12 col-md-5">
+                        <div class="scenario-box body-m" id="scenarioText">
+                            אתם מזכירי הסניף באשדוד. חדר הציוד הפך צפוף מדי, ואין מקום מסודר לאחסן בו את
+                            ציוד המשרד.
+                            יש להזמין 2 יחידות של ארון מתכת דגם R11, מק"ט 55210.
+                        </div>
+                    </div>
+
+                    <!-- הטופס האינטראקטיבי -->
+                    <div class="col-12 col-md-7">
+                        <form id="practiceForm" novalidate>
+                            <div class="mb-3">
+                                <label for="fFullName" class="form-label body-m">שם מלא</label>
+                                <input type="text" class="form-control" id="fFullName" name="fullName">
+                                <p class="field-feedback" data-for="fFullName"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fRole" class="form-label body-m">תפקיד</label>
+                                <input type="text" class="form-control" id="fRole" name="role">
+                                <p class="field-feedback" data-for="fRole"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fBranch" class="form-label body-m">סניף</label>
+                                <select class="form-select" id="fBranch" name="branch">
+                                    <option value="" selected>בחרו סניף...</option>
+                                    <option value="אשדוד">אשדוד</option>
+                                    <option value="חיפה">חיפה</option>
+                                    <option value="ירושלים">ירושלים</option>
+                                    <option value="תל אביב">תל אביב</option>
+                                </select>
+                                <p class="field-feedback" data-for="fBranch"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fDate" class="form-label body-m">תאריך הבקשה</label>
+                                <!-- ממולא אוטומטית בטעינת העמוד (ב-main.js), שדה לקריאה בלבד -->
+                                <input type="text" class="form-control" id="fDate" name="date" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fReason" class="form-label body-m">הסבר הצורך</label>
+                                <textarea class="form-control" id="fReason" name="reason" rows="3"></textarea>
+                                <p class="field-feedback" data-for="fReason"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fItemName" class="form-label body-m">שם הפריט</label>
+                                <input type="text" class="form-control" id="fItemName" name="itemName">
+                                <p class="field-feedback" data-for="fItemName"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fSku" class="form-label body-m">מק"ט</label>
+                                <input type="text" class="form-control" id="fSku" name="sku" inputmode="numeric">
+                                <p class="field-feedback" data-for="fSku"></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fQty" class="form-label body-m">כמות</label>
+                                <input type="number" class="form-control" id="fQty" name="qty" min="1" step="1">
+                                <p class="field-feedback" data-for="fQty"></p>
+                            </div>
+
+                            <!-- טקסט ההכוונה לשליחה מופיע תמיד, לא מותנה במילוי מלא -->
+                            <p class="body-m">כשתסיימו למלא את כל השדות, לחצו על "שליחת טופס" לבדיקה.</p>
+                            <button type="submit" class="btn btn-primary">שליחת טופס</button>
+
+                            <p class="body-l feedback-text" id="formFeedback" role="status" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== מקטע 6 - מסך סיום לתרגול - אין פריט ניווט נפרד ===================== -->
+        <section id="sium" class="container section-block" aria-labelledby="siumTitle">
+            <h2 id="siumTitle">סיימתם את התרגול!</h2>
+            <p class="body-l">
+                בפעם הבאה שתצטרכו להזמין ציוד לסניף, זכרו: כשכל הפרטים בטופס מלאים, מנהל הסניף יכול
+                לבדוק את הבקשה בלי לחזור אליכם להשלמות. אחרי האישור, רכז הרכש יכול להתחיל לטפל בה.
+            </p>
+            <p class="body-l fw-bold">זכרו, בקשה מלאה היא בקשה שמגיעה מהר יותר.</p>
+        </section>
+
+    </main>
+
+    <!-- ===================== מקטע 7 - Footer ===================== -->
+    <footer id="siteFooter" class="container-fluid section-block">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-12 col-md-3">
+                    <p class="fw-bold">מרחב</p>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <p class="fw-bold body-m">מפת אתר</p>
+                    <nav aria-label="ניווט בפוטר">
+                        <ul class="list-unstyled body-m">
+                            <li><a href="#lama-li">למה לי?</a></li>
+                            <li><a href="#mabat-al">מבט על</a></li>
+                            <li><a href="#ha-tofes">הטופס</a></li>
+                            <li><a href="#achshav-torchem">עכשיו תורכם</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <p class="fw-bold body-m">אודות</p>
+                    <p class="body-m">
+                        יחידת למידה קצרה לעובדים חדשים ברשת המשרדים "מרחב": איך מגישים בקשת רכש מלאה
+                        כבר בפעם הראשונה. היחידה פותחה במסגרת הקורס "תכנות 3", מטלת אמצע. "מרחב" היא
+                        לקוח מדומה.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <p class="fw-bold body-m">יוצרים</p>
+                    <p class="body-m">תמר יחיאלי ושחר פריד</p>
+                    <p class="body-m">© 2026 תמר יחיאלי ושחר פריד. כל הזכויות שמורות.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
- 
- 
- 
+    </footer>
+
+    <!-- bootstrap bundle (כולל Popper) - בסוף הגוף לטעינה יעילה -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <!-- קוד האתר -->
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>
