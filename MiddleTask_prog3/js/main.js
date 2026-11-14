@@ -28,16 +28,16 @@ const PARTIAL = {name:'נועה לוי', role:'רכזת הדרכה', branch:'ח�
 
 function control(f, id, v, live, lockedPart){
   const dis = (!live || f.auto || lockedPart) ? ' disabled' : '';
-  const cls = f.auto ? ' class="auto"' : '';
+  const cls = f.auto ? ' auto' : '';
   const aria = live && !f.auto && !lockedPart ? ` aria-describedby="${id}-m"` : '';
   if (f.type === 'select'){
     const opts = ['<option value=""></option>', ...BRANCHES.map(b => `<option${b===v?' selected':''}>${b}</option>`)].join('');
-    return `<select id="${id}" name="${f.k}"${dis}${aria}>${opts}</select>`;
+    return `<select class="form-select${cls}" id="${id}" name="${f.k}"${dis}${aria}>${opts}</select>`;
   }
-  if (f.type === 'textarea') return `<textarea id="${id}" name="${f.k}"${dis}${aria}>${esc(v)}</textarea>`;
+  if (f.type === 'textarea') return `<textarea class="form-control${cls}" id="${id}" name="${f.k}"${dis}${aria}>${esc(v)}</textarea>`;
   const im = f.num ? ' inputmode="numeric"' : '';
   const ac = f.ac && live ? ` autocomplete="${f.ac}"` : ' autocomplete="off"';
-  return `<input id="${id}" name="${f.k}" type="text" value="${esc(v)}"${cls}${im}${ac}${dis}${aria}>`;
+  return `<input class="form-control${cls}" id="${id}" name="${f.k}" type="text" value="${esc(v)}"${im}${ac}${dis}${aria}>`;
 }
 
 /* opts: id, live, values, only:[part numbers], hot, lock3, tags */
@@ -77,11 +77,12 @@ document.addEventListener('click', e => {
   if (a && $('#practice').hidden){ e.preventDefault(); $('#check').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); }
 });
 
-/* ---- nav ---- */
-const nav = $('#nav'), burger = $('#burger'), links = $('#links');
+/* ---- nav (mobile open/close is Bootstrap's own collapse plugin, via data-bs-toggle on the burger button) ---- */
+const nav = $('#nav'), links = $('#links');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), {passive:true});
-burger.addEventListener('click', () => { const o = links.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
-links.addEventListener('click', e => { if (e.target.closest('a')){ links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }});
+links.addEventListener('click', e => {
+  if (e.target.closest('a') && links.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(links).hide();
+});
 const navMap = {why:'why', overview:'overview', form:'form', check:'form', practice:'practice', done:'practice'};
 const io = new IntersectionObserver(es => {
   es.forEach(en => { if (en.isIntersecting){
@@ -112,7 +113,8 @@ const MODAL = {
      m:'רכז הרכש מחזיר את הבקשה למבקש. אחרי ההשלמה, הבקשה נשלחת לאישור מחדש.'}
 };
 const opened = new Set();
-const dlg = $('#dlg');
+const dlgEl = $('#dlg');
+const dlg = bootstrap.Modal.getOrCreateInstance(dlgEl);
 let lastFocus = null;
 
 function updateProgress(){
@@ -124,6 +126,11 @@ function updateProgress(){
   go.setAttribute('aria-disabled', n < 3);
   go.toggleAttribute('data-locked', n < 3);
   go.style.opacity = n < 3 ? .5 : 1;
+  const bar = $('#prog-bar .progress-bar');
+  bar.style.width = `${(n / 3) * 100}%`;
+  bar.classList.toggle('full', n >= 3);
+  $('#prog-bar').setAttribute('aria-valuenow', n);
+  $('#prog-text').textContent = `${n} מתוך 3 חלקים נפתחו`;
 }
 $('#go-check').addEventListener('click', e => { if (opened.size < 3) e.preventDefault(); });
 updateProgress();
@@ -133,14 +140,11 @@ function openPart(n){
   $('#dlg-t').textContent = m.t; $('#dlg-b').textContent = m.b; $('#dlg-ex').textContent = m.ex; $('#dlg-m').textContent = m.m;
   mount('#dlg-form', {id:'dl', values:EXAMPLE, only:[+n], label:`דוגמה: ${PARTS[n-1].title}`});
   lastFocus = document.activeElement;
-  dlg.showModal();
+  dlg.show();
   opened.add(String(n)); updateProgress();
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openPart(b.dataset.open); });
-const closeDlg = () => dlg.close();
-$('#dlg-x').addEventListener('click', closeDlg);
-dlg.addEventListener('click', e => { if (e.target === dlg) closeDlg(); });
-dlg.addEventListener('close', () => { if (lastFocus) lastFocus.focus(); });
+dlgEl.addEventListener('hidden.bs.modal', () => { if (lastFocus) lastFocus.focus(); });
 
 /* ---- check questions ---- */
 const ICON = {good:'i-ok', part:'i-info', bad:'i-alert', none:'i-info'};
