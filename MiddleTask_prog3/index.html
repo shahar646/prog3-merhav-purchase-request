@@ -1,0 +1,111 @@
+﻿
+
+<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>פיתוח אתרי אינטרנט -תרגיל בית שיעור 7</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+
+</head>
+
+ <body class="bg-light">
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">בחרו את התוכנית המתאימה לכם</h1>
+        <p class="text-center">הצטרפו לאלפי לקוחות מרוצים שכבר משתמשים במערכת שלנו.</p>
+    </div>
+
+    <div class="row gy-3">
+
+        <div class="col-12 col-md-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h4 class="">בסיסי</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="">חינם</h2>
+                    <ul class="">
+                        <li class="list-group-item">גישה בסיסית למערכת</li>
+                        <li class="list-group-item">עד 5 משתמשים</li>
+                        <li class="list-group-item">תמיכה במייל</li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-primary  w-100 toastTrigger" >בחר בתוכנית</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card text-center">
+                <div class="bg-primary card-header text-white">
+                    <h4 class="">פרו (מומלץ!)</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="">₪99 <small class="fs-6 text-body-secondary">/ לחודש</small></h2>
+                    <ul class="">
+                        <li class="list-group-item">גישה מלאה למערכת</li>
+                        <li class="list-group-item">עד 50 משתמשים</li>
+                        <li class="list-group-item">תמיכה 24/7 בטלפון ובצ'אט</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary  w-100 toastTrigger" >בחר בתוכנית הפרו</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h4 class="">פרימיום</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="">₪199 <small class="fs-6 text-body-secondary">/ לחודש</small></h2>
+                    <ul class="">
+                        <li class="list-group-item">כל הפיצ'רים פתוחים</li>
+                        <li class="list-group-item">משתמשים ללא הגבלה</li>
+                        <li class="list-group-item">מנהל תיק לקוח אישי</li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-primary  w-100 toastTrigger" >בחר בתוכנית</button>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+</div>
+
+
+<!--/*-->
+<!--* הצגת הודעת Toast בלחיצה על כפתורי בחירת התוכנית.-->
+<!--* הקוד מבוסס על דוגמת "Live example" ב- Bootstrap :-->
+<!--*-->
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">בחירת תוכנית</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            התוכנית נבחרה בהצלחה!
+        </div>
+    </div>
+</div>
+ 
+ 
+ 
+</body>
+
+</html>
