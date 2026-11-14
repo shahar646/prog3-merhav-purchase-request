@@ -53,19 +53,26 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("checkQ1Btn").addEventListener("click", function () {
         const selected = document.querySelector('input[name="q1"]:checked');
         const feedbackEl = document.getElementById("q1Feedback");
+        // אלמנט ההורה שמקבל את החיווי הוויזואלי (מסגרת+רקע), בנוסף לטקסט
+        const blockEl = document.getElementById("q1Block");
 
         if (!selected) {
             feedbackEl.textContent = "יש לבחור תשובה.";
+            blockEl.classList.remove("state-success", "state-error");
             return;
         }
 
         if (selected.value === q1CorrectAnswer) {
             feedbackEl.textContent = "נכון. בבקשה חסרים פרטים, והיא עוד לא אושרה על ידי מנהל הסניף. " +
                 "בקשה כזו הייתה חוזרת אליכם להשלמה, וספירת 3 ימי העבודה הייתה מתחילה מחדש.";
+            blockEl.classList.add("state-success");
+            blockEl.classList.remove("state-error");
         } else {
             feedbackEl.textContent = "לא בדיוק. בדקו שוב כל שדה בטופס. בקשה עוברת לרכש רק כשכל השדות " +
                 "מלאים והיא מאושרת על ידי מנהל הסניף. בקשה חסרה חוזרת אליכם להשלמה, וספירת 3 ימי " +
                 "העבודה מתחילה מחדש.";
+            blockEl.classList.add("state-error");
+            blockEl.classList.remove("state-success");
         }
     });
 
@@ -75,6 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("checkQ2Btn").addEventListener("click", function () {
         const checkboxes = document.querySelectorAll('#bdikat-bakasha input[type="checkbox"]');
         const feedbackEl = document.getElementById("q2Feedback");
+        // אלמנט ההורה שמקבל את החיווי הוויזואלי (מסגרת+רקע), בנוסף לטקסט
+        const blockEl = document.getElementById("q2Block");
 
         const selectedValues = [];
         checkboxes.forEach(function (box) {
@@ -85,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedValues.length === 0) {
             feedbackEl.textContent = "יש לבחור לפחות תשובה אחת.";
+            blockEl.classList.remove("state-success", "state-error");
             return;
         }
 
@@ -95,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hasWrongSelection) {
             feedbackEl.textContent = "לא בדיוק. חלק מהפרטים שבחרתם כבר מלאים בטופס. בדקו שוב: איזה " +
                 "שדה ריק, ואיזה שדה מלא אבל לא מסביר מספיק?";
+            blockEl.classList.add("state-error");
+            blockEl.classList.remove("state-success");
             return;
         }
 
@@ -106,9 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
             feedbackEl.textContent = "נכון. \"צריך\" לא מסביר לאן ילך הציוד ולמה, ובלי מק\"ט הרכש לא " +
                 "יודע איזה לוח בדיוק להזמין. אחרי ההשלמה, הבקשה נשלחת לאישור מנהל הסניף, ואז רכז " +
                 "הרכש יכול להתחיל לטפל בה.";
+            blockEl.classList.add("state-success");
+            blockEl.classList.remove("state-error");
         } else {
             feedbackEl.textContent = "כמעט. מצאתם פרט אחד שצריך להשלים, אבל יש עוד אחד. בדקו שוב את " +
                 "הסבר הצורך ואת פרטי הפריט.";
+            blockEl.classList.add("state-error");
+            blockEl.classList.remove("state-success");
         }
     });
 
@@ -217,6 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (check.isEmpty(value)) {
                 feedbackEl.textContent = check.emptyMsg;
+                // חיווי ויזואלי על השדה עצמו (מסגרת אדומה), בנוסף לטקסט - בעזרת מחלקות Bootstrap
+                inputEl.classList.add("is-invalid");
+                inputEl.classList.remove("is-valid");
                 problemCount++;
                 return;
             }
@@ -225,10 +244,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (wrongResult === false) {
                 feedbackEl.textContent = "";
+                inputEl.classList.add("is-valid");
+                inputEl.classList.remove("is-invalid");
                 return;
             }
 
             problemCount++;
+            inputEl.classList.add("is-invalid");
+            inputEl.classList.remove("is-valid");
 
             if (wrongResult === "notNumber") {
                 feedbackEl.textContent = check.notNumberMsg;
@@ -242,18 +265,23 @@ document.addEventListener("DOMContentLoaded", function () {
         /*
          * סף למשוב הכללי (עדיין פתוח להחלטה סופית, כפי שסומן במסמך התוכן):
          * 0 בעיות = נכונה, 1-2 בעיות = חלקית, 3 ומעלה = שגויה.
+         * חיווי ויזואלי (מסגרת+רקע ירוק/כתום/אדום) נוסף לטקסט בעזרת מחלקות state-*.
          */
         const formFeedbackEl = document.getElementById("formFeedback");
+        formFeedbackEl.classList.remove("state-success", "state-warning", "state-error");
 
         if (problemCount === 0) {
             formFeedbackEl.textContent = "כל הכבוד! הבקשה מלאה ומוכנה לאישור מנהל הסניף. מנהל הסניף " +
                 "יכול לאשר אותה בלי לחזור אליכם להשלמות, ואחרי האישור רכז הרכש יכול להתחיל לטפל בה.";
+            formFeedbackEl.classList.add("state-success");
         } else if (problemCount <= 2) {
             formFeedbackEl.textContent = "כמעט. הבקשה עדיין לא מוכנה לאישור. בקשה כזו הייתה חוזרת " +
                 "אליכם להשלמה, וספירת 3 ימי העבודה הייתה מתחילה מחדש. תקנו את השדות המסומנים ושלחו שוב.";
+            formFeedbackEl.classList.add("state-warning");
         } else {
             formFeedbackEl.textContent = "הבקשה עדיין רחוקה מלהיות מלאה. חזרו לתרחיש ומלאו כל שדה לפי " +
                 "הפרטים שמופיעים בו. אפשר להיעזר בהסברים על חלקי הטופס.";
+            formFeedbackEl.classList.add("state-error");
         }
     });
 

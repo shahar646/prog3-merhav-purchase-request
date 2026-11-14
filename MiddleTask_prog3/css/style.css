@@ -1,57 +1,88 @@
 /*
  * style.css - מגישים בקשת רכש מלאה
- * שלב נוכחי: טיפוגרפיה בלבד (גופן + היררכיית גדלים/משקלים).
- * אין עדיין שכבת עיצוב ויזואלית (צבעים/רקעים/צללים) - זו תתווסף בשלב הבא,
- * אחרי שהמבנה והאינטראקציות יאושרו.
- * כללי CSS מינימליים המסומנים "קוד מבני" למטה דרושים לתפקוד (לא לעיצוב),
- * ולכן קיימים כבר בשלב הזה.
+ * שלב נוכחי: הלבשת עיצוב מלאה, מבוססת על צבעים/טיפוגרפיה/מרווחים שנדלו
+ * ב-Figma (Online Learning Website UI Kit) ומותאמים לגופן Assistant ול-RTL.
+ * כל הצבעים/מרווחים/רדיוסים מרוכזים במשתני CSS אחדים ב-:root, כדי שלא
+ * לשכפל ערכים בקוד (classes משתמשים במשתנים, לא בערכים קשיחים).
  */
 
-/* ===== משתני CSS - היררכיית טיפוגרפיה (מבוססת על סולם הגדלים/משקלים מה-UI Kit, מותאמת לגופן Assistant) ===== */
+/* ===== משתני CSS - טוקנים של מערכת העיצוב (צבעים, טיפוגרפיה, מרווחים, רדיוסים, צללים) ===== */
 :root {
     --font-main: "Assistant", Arial, sans-serif;
 
-    /* H1 - כותרת הירו */
+    /* --- טיפוגרפיה (היררכיה מבוססת UI Kit, מותאמת לאסיסטנט) --- */
     --fs-h1: 3rem;
     --fw-h1: 700;
-
-    /* H2 - כותרת מקטע */
     --fs-h2: 2rem;
     --fw-h2: 600;
-
-    /* Eyebrow - תווית-על מעל כותרת מקטע */
     --fs-eyebrow: 1.25rem;
     --fw-eyebrow: 700;
-
-    /* Body L - פסקת גוף ראשית */
     --fs-body-l: 1.125rem;
     --fw-body-l: 500;
-
-    /* Body M - טקסט משני/תמיכה */
     --fs-body-m: 1rem;
     --fw-body-m: 400;
-
     --line-height-base: 1.5;
+
+    /* --- צבעי מיתוג, נדלים מה-UI Kit בפיגמה --- */
+    --color-brand-blue: #0163FD;
+    --color-brand-blue-dark: #0043AC;
+    --color-accent-orange: #F29D38;
+    --color-accent-orange-dark: #C67336;
+    --color-ink: #141414;
+    --color-white: #FFFFFF;
+
+    /* --- רקעים לחלוקת מקטעים (הפרדה ויזואלית ברורה בין מקטע למקטע) --- */
+    --color-surface: #FFFFFF;
+    --color-tint-blue: #EEF4FF;
+    --color-border-soft: #DCE6F7;
+
+    /* --- צבעי מצב: הצלחה / כישלון / חלקי (חיווי ויזואלי בנוסף לטקסטואלי) --- */
+    --color-success: #1E8E3E;
+    --color-success-bg: #E6F4EA;
+    --color-error: #D23B2F;
+    --color-error-bg: #FCEAE8;
+    --color-warning: #C67336;
+    --color-warning-bg: #FBEEE2;
+
+    /* --- צורה: רדיוסים וצללים (לפי שפת העיצוב של ה-UI Kit) --- */
+    --radius-card: 12px;
+    --radius-pill: 999px;
+    --shadow-soft: 0 4px 16px rgba(8, 7, 7, 0.08);
+
+    /* --- שוליים עדינים משני צדי האתר + גובה סרגל הניווט הקבוע --- */
+    --page-gutter: clamp(1rem, 4vw, 3rem);
+    --nav-height: 64px;
 }
 
 /* ===== בסיס ===== */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--fs-body-m);
     font-weight: var(--fw-body-m);
     line-height: var(--line-height-base);
+    color: var(--color-ink);
+    /* פיצוי על סרגל הניווט ה-fixed-top, כדי שתוכן לא יוסתר מתחתיו */
+    padding-top: var(--nav-height);
 }
 
 h1 {
     font-size: var(--fs-h1);
     font-weight: var(--fw-h1);
     line-height: 1.3;
+    color: var(--color-brand-blue-dark);
 }
 
 h2 {
     font-size: var(--fs-h2);
     font-weight: var(--fw-h2);
     line-height: 1.3;
+    color: var(--color-brand-blue-dark);
+    /* מיקום אחיד של כותרות מקטע: אותו מרווח מעל ומתחת בכל מקטע */
+    margin-bottom: 1.25rem;
 }
 
 h3 {
@@ -62,7 +93,7 @@ h3 {
 .eyebrow {
     font-size: var(--fs-eyebrow);
     font-weight: var(--fw-eyebrow);
-    text-transform: none;
+    color: var(--color-accent-orange-dark);
     margin-bottom: 0.25rem;
 }
 
@@ -76,9 +107,68 @@ h3 {
     font-weight: var(--fw-body-m);
 }
 
-/* ===== מרווח אחיד בין מקטעים ===== */
+/* ===== שוליים עדינים משני צדי האתר (מעבר לגאטר הרגיל של Bootstrap) ===== */
+.container {
+    padding-inline: max(var(--bs-gutter-x, 0.75rem), var(--page-gutter));
+}
+
+/* ===================================================================
+ * סרגל ניווט - fixed-top: קבוע בראש העמוד תמיד, גם כשגוללים
+ * =================================================================== */
+#mainNav {
+    height: var(--nav-height);
+    background-color: var(--color-brand-blue);
+    box-shadow: var(--shadow-soft);
+}
+
+#mainNav .navbar-brand {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#mainNav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+
+#mainNav .nav-link:hover,
+#mainNav .nav-link:focus {
+    color: var(--color-white);
+}
+
+#mainNav .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#mainNav .navbar-toggler-icon {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* פריט ניווט נעול (עד ששלושת הזום-אינים נפתחו) */
+.nav-link[data-locked="true"] {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+}
+
+/* ===================================================================
+ * מקטעי האתר: הפרדה ויזואלית ברורה בין מקטע למקטע (רקעים מתחלפים)
+ * =================================================================== */
 .section-block {
-    padding-block: 3rem;
+    padding-block: 4rem;
+}
+
+.bg-surface {
+    background-color: var(--color-surface);
+}
+
+.bg-tint-blue {
+    background-color: var(--color-tint-blue);
+}
+
+.bg-brand-blue {
+    background-color: var(--color-brand-blue);
 }
 
 /* ===== קוד מבני: הסתרת אלמנטים (נשלט ב-JS עם classList.add/remove/toggle) ===== */
@@ -86,9 +176,14 @@ h3 {
     display: none;
 }
 
-/* ===== קוד מבני: פלייסהולדר לתמונות שעדיין לא קיימות ===== */
+/* ===================================================================
+ * פלייסהולדרים לתמונות שעדיין לא קיימות
+ * =================================================================== */
 .image-placeholder {
-    border: 2px dashed currentColor;
+    border: 2px dashed var(--color-brand-blue);
+    border-radius: var(--radius-card);
+    background-color: var(--color-tint-blue);
+    color: var(--color-brand-blue-dark);
     min-height: 220px;
     display: flex;
     align-items: center;
@@ -96,9 +191,16 @@ h3 {
     text-align: center;
     position: relative;
     padding: 1rem;
+    font-weight: 600;
 }
 
-/* ===== קוד מבני: מיקום נקודות הלחיצה (הזום-אינים) מעל תמונת הפלייסהולדר ===== */
+/* גרסה קטנה יותר: פלייסהולדר לזום-אין בתוך מודל */
+.image-placeholder-sm {
+    min-height: 160px;
+    font-size: 0.875rem;
+}
+
+/* ===== נקודות לחיצה (הזום-אינים) מעל תמונת הפלייסהולדר ===== */
 .form-hotspot-wrap {
     min-height: 320px;
 }
@@ -109,45 +211,155 @@ h3 {
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
-    border: 2px solid currentColor;
-    background: #fff;
+    border: 2px solid var(--color-white);
+    background: var(--color-accent-orange);
+    color: var(--color-white);
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
+    box-shadow: var(--shadow-soft);
 }
 
-/* ===== קוד מבני: רשימת שלבי השרשרת (מקטע 1) בלי עיצוב בולט (תווים/רקעים) ===== */
-.chain-steps {
-    list-style: none;
-    padding-inline-start: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+.hotspot-btn:hover,
+.hotspot-btn:focus {
+    background: var(--color-accent-orange-dark);
 }
 
-/* ===== קוד מבני: תצוגת טופס חלקי לקריאה בלבד (מקטע 4) ===== */
+/* ===================================================================
+ * תרשים השרשרת (מקטע 1) - SVG מצויר בקוד, בצבעי המיתוג
+ * =================================================================== */
+.chain-diagram {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+}
+
+.chain-box {
+    fill: var(--color-brand-blue);
+    stroke: none;
+}
+
+.chain-box-text {
+    fill: var(--color-white);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.chain-pill {
+    stroke-width: 2;
+}
+
+.chain-pill-success {
+    fill: var(--color-success-bg);
+    stroke: var(--color-success);
+}
+
+.chain-pill-error {
+    fill: var(--color-error-bg);
+    stroke: var(--color-error);
+}
+
+.chain-pill-text {
+    fill: var(--color-success);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.chain-pill-text-sm {
+    fill: var(--color-error);
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.chain-arrow {
+    stroke: var(--color-brand-blue);
+    stroke-width: 3;
+}
+
+.chain-arrow-success {
+    stroke: var(--color-success);
+}
+
+.chain-arrow-error {
+    stroke: var(--color-error);
+}
+
+.chain-arrow-dashed {
+    stroke-dasharray: 6 5;
+}
+
+.chain-arrow-head {
+    fill: var(--color-brand-blue);
+}
+
+.chain-arrow-head-success {
+    fill: var(--color-success);
+}
+
+.chain-arrow-head-error {
+    fill: var(--color-error);
+}
+
+/* ===================================================================
+ * שאלות הבנה (מקטע 4) ותצוגת טופס חלקי
+ * =================================================================== */
+.question-block {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+    /* רצועת צבע בצד ה"פתיחה" (ימין ב-RTL) להדגשת מצב התשובה */
+    border-inline-start: 4px solid var(--color-border-soft);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* חיווי ויזואלי: מסגרת+רקע ירוקים להצלחה, אדומים לכישלון - בנוסף לטקסט הקיים */
+.question-block.state-success {
+    border-color: var(--color-success);
+    border-inline-start-color: var(--color-success);
+    background-color: var(--color-success-bg);
+}
+
+.question-block.state-error {
+    border-color: var(--color-error);
+    border-inline-start-color: var(--color-error);
+    background-color: var(--color-error-bg);
+}
+
 .partial-form-display {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 0.75rem;
     row-gap: 0.25rem;
+    margin-top: 1rem;
 }
 
 .partial-form-display dt {
     font-weight: 600;
+    color: var(--color-brand-blue-dark);
 }
 
 .partial-form-display dd {
     margin: 0;
 }
 
-/* ===== קוד מבני: תיבת התרחיש הקבועה לצד הטופס (מקטע 5) ===== */
+/* ===================================================================
+ * תרגול מסכם (מקטע 5): תיבת תרחיש + משוב טופס
+ * =================================================================== */
 .scenario-box {
-    border: 1px solid currentColor;
-    padding: 1rem;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    padding: 1.25rem;
 }
 
-/* ===== קוד מבני: אזור משוב טקסטואלי (שאלות/טופס) ===== */
+/* ===== אזור משוב טקסטואלי (שאלות/טופס) ===== */
 .feedback-text:empty,
 .field-feedback:empty {
     display: none;
@@ -156,11 +368,97 @@ h3 {
 .field-feedback {
     font-size: 0.875rem;
     margin-top: 0.25rem;
+    color: var(--color-error);
+    font-weight: 600;
 }
 
-/* ===== קוד מבני: נעילת פריט ניווט (עד שלושת הזום-אינים נפתחו) ===== */
-.nav-link[data-locked="true"] {
-    pointer-events: none;
-    cursor: default;
-    opacity: 0.5;
+/* תיבת המשוב הכללי על הטופס, עם חיווי ויזואלי בנוסף לטקסט */
+#formFeedback:not(:empty) {
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border-soft);
+    font-weight: 600;
+}
+
+#formFeedback.state-success {
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+#formFeedback.state-warning {
+    background-color: var(--color-warning-bg);
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+}
+
+#formFeedback.state-error {
+    background-color: var(--color-error-bg);
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
+
+/* ===================================================================
+ * כפתורים - צורת "פיל", כמו ב-UI Kit
+ * =================================================================== */
+.btn-primary {
+    background-color: var(--color-brand-blue);
+    border-color: var(--color-brand-blue);
+    border-radius: var(--radius-pill);
+    padding-inline: 1.75rem;
+    font-weight: 700;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-brand-blue-dark);
+    border-color: var(--color-brand-blue-dark);
+}
+
+/* ===================================================================
+ * מודלים (זום-אינים): פינות מעוגלות + כפתור "אישור בקשה" בצבע ירוק
+ * =================================================================== */
+.modal-content {
+    border-radius: var(--radius-card);
+    border: none;
+    box-shadow: var(--shadow-soft);
+}
+
+.modal-header {
+    border-bottom-color: var(--color-border-soft);
+}
+
+.modal-title {
+    color: var(--color-brand-blue-dark);
+}
+
+/* ===================================================================
+ * Footer - רקע מיתוג כחול מלא, טקסט לבן (כמו ב-UI Kit)
+ * =================================================================== */
+#siteFooter a {
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+#siteFooter a:hover,
+#siteFooter a:focus {
+    text-decoration: underline;
+}
+
+.footer-links li {
+    margin-bottom: 0.4rem;
+}
+
+/* ===================================================================
+ * נגישות: focus ברור לכל אלמנט שניתן לנווט אליו במקלדת
+ * =================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-accent-orange);
+    outline-offset: 2px;
 }
